@@ -21,7 +21,7 @@ public void registrationNavigation() {
     String url = "https://qa.koel.app/";
     driver.get(url);
 
-    WebElement submit = driver.findElement(By.cssSelector("href=registration"));
+    WebElement submit = driver.findElement(By.cssSelector("[href='registration']"));
     submit.click();
 
     Assert.assertEquals(driver.getCurrentUrl(), "https://qa.koel.app/registration");
