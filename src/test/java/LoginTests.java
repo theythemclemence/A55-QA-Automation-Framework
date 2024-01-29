@@ -49,4 +49,4 @@ public class LoginTests extends BaseTest {
     }
 }
 
-// I was getting an error message when I had my homework saved as a separate Class file so I refactored and added it into LoginTests and that seems to have worked. Please explain
+// I was getting an error message ("No matching tests found in any candidate test task") when I had my Homework16 saved as a separate Class file and then would try to run it directly from that file so I added my test it into LoginTests (via refactor) and that seems to have worked. If this is not best practice, please explain how to proceed next time. Hopefully this doesn't affect the grade of my HW resubmission. Thanks!
