@@ -18,13 +18,11 @@ public class Homework17 extends BaseTest {
 
         // 1. Navigate to Koel
        launchBrowser();
-       // String url = "https://qa.koel.app/";
-        //driver.get(url);
 
         // 2. Login with valid credentials
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("clemence.breslin@testpro.io");
+
+
+
 
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();

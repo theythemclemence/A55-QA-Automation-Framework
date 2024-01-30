@@ -38,25 +38,23 @@ public class BaseTest {
 
     @Test
     public void loginValidEmailPassword() {
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("clemence.breslin@testpro.io");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("0usTFBYn");
-
-        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
+        navigateToPage();
+        provideEmail("clemence.breslin@testpro.io");
+        providePassword("0usTFBYn");
+        clickSubmit();
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
+    @Test
+    public void loginInvalidEmailPassword() {
+        navigateToPage();
+        provideEmail("invalid@class.com");
+        providePassword("te$t$tudent");
+        clickSubmit();
 
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
     public void navigateToPage() {
         driver.get(url);
     }
@@ -64,32 +62,18 @@ public class BaseTest {
     public void provideEmail(String email) {
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("clemence.breslin@testpro.io");
+        emailField.sendKeys(email);
     }
 
     public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("0usTFBYn");
+        passwordField.sendKeys(password);
     }
 
     public void clickSubmit() {
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
-    }
-    @Test
-    public void loginEmptyEmailPassword() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
     }
 }
 
