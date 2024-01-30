@@ -18,6 +18,9 @@ public class Homework17 extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        String actual_text = "Added 1 song into \"Test";
+        String expected_text = "Added 1 song into \"Test";
+
         // 1. Navigate to Koel
         String url = "https://qa.koel.app/";
         driver.get(url);
@@ -36,21 +39,22 @@ public class Homework17 extends BaseTest {
 
         // 3. Search for a song
 
-        WebElement searchBar = driver.findElement(By.cssSelector("input[type=search]"));
+        WebElement searchBar = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
         searchBar.clear();
         searchBar.sendKeys("Dark Days");
 
         // 4. Click 'View All' button
-        WebElement viewAll = driver.findElement(By.cssSelector("button[type='view all']"));
+        WebElement viewAll = driver.findElement(By.cssSelector("//button[@data-test='view-all-songs-btn']"));
         submit.click();
 
         // 5. Click on first result
-        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath((//div[@id='songResultsWrapper']');
+        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath((//section[@id='songResultsWrapper']//tr[@class='song-item'][1]');
         submit.click();
 
         //6. Click 'Add To' button
-        WebElement addTo = driver.findElement(By.cssSelector("button[type= 'add-to']"));
-        submit.click();
+        WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
+        addToBtn.click();
+        //submit.click();
 
         //7. Add song to existing playlist
         WebElement addPlaylist = driver.findElement(By.cssSelector("button[class= 'playlist'>Test]"));
@@ -59,12 +63,18 @@ public class Homework17 extends BaseTest {
         //8. Verify that notification appears confirming song was added to Playlist
         Thread.sleep(2000);
 
-        String actual_text = "Added 1 song into Test";
-        String expected_text = "Added 1 song into Test";
-
         Assert.assertEquals(actual_text, expected_text);
 
         driver.quit();
     }
+}
+
+// Helper Methods
+
+public void clickAddToBtn() {
+    WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
+    addToBtn.click();
+
+
 }
 
