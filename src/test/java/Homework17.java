@@ -43,14 +43,18 @@ public class Homework17 extends BaseTest {
         WebElement viewAll = driver.findElement(By.cssSelector("button[type='view all']"));
         submit.click();
 
-        //5. Click on first song in search results
-
-
-
+        // 5. Click on first result
+        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath(("//div[@id='songResultsWrapper']"));
+        submit.click();
 
         //6. Click 'Add To' button
+        WebElement addTo = driver.findElement(By.cssSelector("button[type= 'add-to']"));
+        submit.click();
 
         //7. Add song to existing playlist
+        WebElement addPlaylist = ;
+        submit.click();
+
 
         //8. Verify that notification appears confirming song was added to Playlist
     }
