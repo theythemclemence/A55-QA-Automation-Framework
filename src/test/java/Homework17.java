@@ -13,18 +13,13 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() {
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         String actual_text = "Added 1 song into \"Test";
         String expected_text = "Added 1 song into \"Test";
 
         // 1. Navigate to Koel
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+       launchBrowser();
+       // String url = "https://qa.koel.app/";
+        //driver.get(url);
 
         // 2. Login with valid credentials
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
