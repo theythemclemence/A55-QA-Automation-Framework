@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.sql.Driver;
@@ -10,7 +11,7 @@ import java.time.Duration;
 
 public class Homework17 extends BaseTest {
     @Test
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -44,7 +45,7 @@ public class Homework17 extends BaseTest {
         submit.click();
 
         // 5. Click on first result
-        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath(("//div[@id='songResultsWrapper']"));
+        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath((//div[@id='songResultsWrapper']');
         submit.click();
 
         //6. Click 'Add To' button
@@ -52,11 +53,18 @@ public class Homework17 extends BaseTest {
         submit.click();
 
         //7. Add song to existing playlist
-        WebElement addPlaylist = ;
+        WebElement addPlaylist = driver.findElement(By.cssSelector("button[class= 'playlist'>Test]"));
         submit.click();
 
-
         //8. Verify that notification appears confirming song was added to Playlist
-    }
+        Thread.sleep(2000);
 
+        String actual_text = "Added 1 song into Test";
+        String expected_text = "Added 1 song into Test";
+
+        Assert.assertEquals(actual_text, expected_text);
+
+        driver.quit();
     }
+}
+
