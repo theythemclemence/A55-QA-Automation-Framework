@@ -11,12 +11,10 @@ import java.time.Duration;
 
 public class Homework17 extends BaseTest {
     @Test
-    public void addSongToPlaylist() throws InterruptedException {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    public void addSongToPlaylist() {
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebDriver driver = new ChromeDriver();
 
         String actual_text = "Added 1 song into \"Test";
         String expected_text = "Added 1 song into \"Test";
