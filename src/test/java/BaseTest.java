@@ -15,6 +15,7 @@ import java.time.Duration;
 public class BaseTest {
     public WebDriver driver = null;
     public String url = "https://qa.koel.app/";
+
     @BeforeSuite
     void setupClass() {
         WebDriverManager.chromedriver().setup();
@@ -28,15 +29,15 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-}
+    }
 
-@AfterMethod
-public void closeBrowser() {
-driver.quit();
-}
+    @AfterMethod
+    public void closeBrowser() {
+        driver.quit();
+    }
 
-@Test
-public void loginValidEmailPassword(){
+    @Test
+    public void loginValidEmailPassword() {
 
         String url = "https://qa.koel.app/";
         driver.get(url);
@@ -54,14 +55,23 @@ public void loginValidEmailPassword(){
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
-}
-@Test
-public void loginEmptyEmailPassword(){
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--remote-allow-origins=*");
+    }
 
-    WebDriver driver = new ChromeDriver(options);
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    @Test
+    public void loginEmptyEmailPassword() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        String url = "https://qa.koel.app/";
+        driver.get(url);
+
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+        driver.quit();
+    }
 }
+
 
 
