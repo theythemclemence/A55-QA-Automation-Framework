@@ -13,8 +13,11 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() {
 
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String actual_text = "Added 1 song into \"Test";
         String expected_text = "Added 1 song into \"Test";
@@ -59,20 +62,25 @@ public class Homework17 extends BaseTest {
         submit.click();
 
         //8. Verify that notification appears confirming song was added to Playlist
-        Thread.sleep(2000);
-
         Assert.assertEquals(actual_text, expected_text);
 
         driver.quit();
     }
-}
+
 
 // Helper Methods
 
-public void clickAddToBtn() {
-    WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
+    public void clickAddToBtn() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
     addToBtn.click();
 
 
+}
 }
 
