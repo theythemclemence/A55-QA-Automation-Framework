@@ -36,21 +36,27 @@ driver.quit();
 }
 
 @Test
-public void loginEmptyEmailPassword(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+public void loginValidEmailPassword(){
 
         String url = "https://qa.koel.app/";
         driver.get(url);
 
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys("clemence.breslin@testpro.io");
+
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys("0usTFBYn");
+
+        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        submit.click();
+
+        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
+        Assert.assertTrue(avatarIcon.isDisplayed());
 }
 @Test
-public void loginValidEmailPassword(){
+public void loginEmptyEmailPassword(){
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--remote-allow-origins=*");
 
