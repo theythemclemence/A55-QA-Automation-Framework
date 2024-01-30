@@ -48,8 +48,7 @@ public class Homework17 extends BaseTest {
 
         //7. Add song to existing playlist
         Thread.sleep(2000);
-        WebElement addPlaylist = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'Test')]"));
-        clickSubmit();
+        choosePlaylist();
 
         //8. Verify that notification appears confirming song was added to Playlist
         Thread.sleep(2000);
@@ -64,16 +63,21 @@ public class Homework17 extends BaseTest {
 
     // Helper Methods
 
+    public void choosePlaylist() throws InterruptedException {
+        WebElement playlist = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'Test Playlist')]"));
+        playlist.click();
+        Thread.sleep(2000);
+    }
+
+    public void searchSong(String name) throws InterruptedException {
+        WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
+        searchField.sendKeys(name);
+        Thread.sleep(2000);
+    }
+
     public void clickAddToBtn() {
         WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
         addToBtn.click();
+
     }
 }
-
-// The test seems to be failing around the AddToPlaylist step and I can't figure out why. @HW team, please offer some help so I can retry and resubmit. Thanks!
-
-
-
-
-
-
