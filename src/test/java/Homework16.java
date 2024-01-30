@@ -30,5 +30,3 @@ public void registrationNavigation() {
 }
 }
 
-// Tried running this test and it failed so not sure what I did wrong above (if anything). Please advise! Thanks
-
