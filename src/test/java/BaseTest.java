@@ -57,6 +57,26 @@ public class BaseTest {
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
+    public void navigateToPage() {
+        driver.get(url);
+    }
+
+    public void provideEmail(String email) {
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys("clemence.breslin@testpro.io");
+    }
+
+    public void providePassword(String password) {
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys("0usTFBYn");
+    }
+
+    public void clickSubmit() {
+        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
+        submit.click();
+    }
     @Test
     public void loginEmptyEmailPassword() {
         ChromeOptions options = new ChromeOptions();
