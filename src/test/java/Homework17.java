@@ -13,37 +13,27 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() {
 
-        String actual_text = "Added 1 song into \"Test";
-        String expected_text = "Added 1 song into \"Test";
+        String actual_text = "Added 1 song into \"Test\"";
+        String expected_text = "Added 1 song into \"Test\"";
 
         // 1. Navigate to Koel
-       launchBrowser();
+       navigateToPage();
 
         // 2. Login with valid credentials
-
-
-
-
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("0usTFBYn");
-
-        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
+        provideEmail("clemence.breslin@testpro.io");
+        providePassword("0usTFBYn");
+        clickSubmit();
 
         // 3. Search for a song
-
-        WebElement searchBar = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
-        searchBar.clear();
-        searchBar.sendKeys("Dark Days");
+        WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
+        searchField.sendKeys("Dark Days");
 
         // 4. Click 'View All' button
-        WebElement viewAll = driver.findElement(By.cssSelector("//button[@data-test='view-all-songs-btn']"));
-        submit.click();
+        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
+        viewAllBtn.click();
 
         // 5. Click on first result
-        WebElement firstResult = driver.findElement(By.xpath(driver.findElement(By.xpath((//section[@id='songResultsWrapper']//tr[@class='song-item'][1]');
-        submit.click();
+
 
         //6. Click 'Add To' button
         WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
@@ -58,22 +48,22 @@ public class Homework17 extends BaseTest {
         Assert.assertEquals(actual_text, expected_text);
 
         driver.quit();
-    }
 
 
-// Helper Methods
+        }
 
-    public void clickAddToBtn() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        // Helper Methods
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
-    addToBtn.click();
+        public void clickAddToBtn() {
+            WebElement addToBtn = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
+            addToBtn.click();
 
 
-}
-}
+        }
+
+            }
+
+
+
+
 
