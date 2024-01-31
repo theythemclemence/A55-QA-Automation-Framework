@@ -36,25 +36,6 @@ public class BaseTest {
         driver.quit();
     }
 
-    @Test
-    public void loginValidEmailPassword() {
-        navigateToPage();
-        provideEmail("clemence.breslin@testpro.io");
-        providePassword("0usTFBYn");
-        clickSubmit();
-
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-        Assert.assertTrue(avatarIcon.isDisplayed());
-    }
-    @Test
-    public void loginInvalidEmailPassword() {
-        navigateToPage();
-        provideEmail("invalid@class.com");
-        providePassword("te$t$tudent");
-        clickSubmit();
-
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-    }
     public void navigateToPage() {
         driver.get(url);
     }
