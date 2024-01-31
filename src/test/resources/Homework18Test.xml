@@ -3,10 +3,9 @@
 
 <suite name="Homework18Test">
 
-    <test name="Example Test" preserve-order="false">
+    <test name="Homework18 Test" preserve-order="false">
         <classes>
             <class name="Homework18"/>
         </classes>
     </test>
-    <test name="playSong"/>
 </suite>
