@@ -10,11 +10,16 @@ public class Homework18 extends BaseTest {
         provideEmail("clemence.breslin@testpro.io");
         providePassword("0usTFBYn");
         clickSubmit();
-        WebElement PlayNext = driver.findElement(By.xpath("//button[@data-test-id='play-btn']"));
+        WebElement PlayNext = driver.findElement(By.xpath("//button[@data-test='play-btn']"));
         clickSubmit();
-        Assert.
+        Assert.assertEquals();
 
 
+
+
+        public void verifyPause() {
+            WebElement pauseButton = driver.findElement(By.xpath("//button[@data-test='pause-btn']"));
+        }
 
 
 
