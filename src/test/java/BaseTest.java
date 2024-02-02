@@ -5,16 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver = null;
-    public String url = "https://qa.koel.app/";
+    //public String url = "https://qa.koel.app/";
 
     @BeforeSuite
     void setupClass() {
@@ -22,13 +19,15 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void launchBrowser() {
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String baseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        navigateToPage(baseURL);
     }
 
     @AfterMethod
@@ -36,7 +35,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void navigateToPage() {
+    public void navigateToPage(String url) {
         driver.get(url);
     }
 
