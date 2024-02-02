@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
     }
             @Test
             public void loginValidEmailPassword() {
-                //navigateToPage();
+                navigateToPage("https://qa.koel.app/");
                 provideEmail("clemence.breslin@testpro.io");
                 providePassword("0usTFBYn");
                 clickSubmit();
@@ -37,7 +37,7 @@ public class LoginTests extends BaseTest {
             }
             @Test
             public void loginInvalidEmailPassword() {
-                //navigateToPage();
+                navigateToPage("https://qa.koel.app/");
                 provideEmail("invalid@class.com");
                 providePassword("te$t$tudent");
                 clickSubmit();

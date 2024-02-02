@@ -15,7 +15,7 @@ public class Homework17 extends BaseTest {
 
         String expectedSongAddedMessage = "Added 1 song into \"Test Pro Playlist.\"";
 
-        navigateToPage();
+        navigateToPage("https://qa.koel.app/");
         provideEmail("clemence.breslin@testpro.io");
         providePassword("0usTFBYn");
         clickSubmit();
