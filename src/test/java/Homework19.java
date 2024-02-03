@@ -1,47 +1,43 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework19 extends BaseTest {
 
-    String expectedPlaylistDeletedMessage = "Deleted Playlist \"Test Pro Playlist.\"";
 
    @Test
-    public void deletePlaylist() {
-    navigateToPage("https://qa.koel.app/");
+    public void deletePlaylist() throws InterruptedException {
+
+       String expectedPlaylistDeletedMessage = "Deleted playlist \"Test Pro Playlist.\"";
+
+
     provideEmail("clemence.breslin@testpro.io");
     providePassword("0usTFBYn");
     clickSubmit();
-    clickPlaylist();
-    playlistDelete();
-    deleteConfirmation();
-    
-
+    openPlaylist();
+    clickDeletePlaylistBtn();
+    Assert.assertEquals(getPlaylistDeletedMsg(), expectedPlaylistDeletedMessage);
 
    }
 
-public void clickPlaylist () {
-    WebElement playlist = driver.findElement(By.xpath("//section[@id='playlists']//li[contains(text(),'Test Pro Playlist')]"));
-    playlist.click();
+public void clickDeletePlaylistBtn () {
+    WebElement playlist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
 
-    // "//[@id="playlists"]/ul/li[4]/a/text(), 'Test Pro Playlist']"
-    // "//[@id="playlists"]/ul/li[4]/a/text()]"
 }
 
-public void playlistDelete() {
-       WebElement deleteBtn = driver.findElement(By.xpath("//[@id='playlist-Wrapper']/header/div[3]/span/button[2]"));
-       deleteBtn.click();
+public void openPlaylist() {
+    WebElement playlistToOpen = driver.findElement(By.cssSelector(".playlist:nth-child(5)"));
+    playlistToOpen.click();
 
        public void deleteConfirmation() {
-           WebElement deleteConf = driver.findElement(By.xpath())
-                   // "//[div[3]/div/div/nav/button[2]]"
-    }
-
+           WebElement deleteConf = driver.findElement(By.cssSelector("div.success.show"));
+           return deleteConfirmation.
     }
 
     public String getPlaylistDeletedMsg() {
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
-        return notification.getText();
+        return notification.getText()
 
 }
 }
