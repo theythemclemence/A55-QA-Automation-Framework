@@ -10,11 +10,11 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    //public String url = "https://qa.koel.app/";
+    public WebDriver driver;
+    public String url = "https://qa.koel.app/";
 
     @BeforeSuite
-    void setupClass() {
+    static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -27,15 +27,16 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        navigateToPage(baseURL);
     }
 
     @AfterMethod
     public void closeBrowser() {
+
         driver.quit();
     }
 
     public void navigateToPage(String url) {
+
         driver.get(url);
     }
 

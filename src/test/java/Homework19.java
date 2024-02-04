@@ -9,7 +9,7 @@ public class Homework19 extends BaseTest {
    @Test
     public void deletePlaylist() throws InterruptedException {
 
-       String expectedPlaylistDeletedMessage = "Deleted playlist \"Test Pro Playlist.\"";
+       String expectedPlaylistDeletedMesg = "Deleted playlist \"Test Pro Playlist.\"";
 
 
     provideEmail("clemence.breslin@testpro.io");
@@ -17,27 +17,24 @@ public class Homework19 extends BaseTest {
     clickSubmit();
     openPlaylist();
     clickDeletePlaylistBtn();
-    Assert.assertEquals(getPlaylistDeletedMsg(), expectedPlaylistDeletedMessage);
+    Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMesg);
 
    }
 
 public void clickDeletePlaylistBtn () {
-    WebElement playlist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
+    WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
+    deletePlaylist.click();
 
 }
 
 public void openPlaylist() {
-    WebElement playlistToOpen = driver.findElement(By.cssSelector(".playlist:nth-child(5)"));
+    WebElement playlistToOpen = driver.findElement(By.cssSelector(".playlist:nth-child(4)"));
     playlistToOpen.click();
+}
 
-       public void deleteConfirmation() {
-           WebElement deleteConf = driver.findElement(By.cssSelector("div.success.show"));
-           return deleteConfirmation.
-    }
-
-    public String getPlaylistDeletedMsg() {
-        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
-        return notification.getText()
+    public String getDeletedPlaylistMsg() {
+        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
+        return notificationMsg.getText();
 
 }
 }

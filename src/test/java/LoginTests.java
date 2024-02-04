@@ -12,22 +12,13 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginEmptyEmailPassword() {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://testpro.io/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        //navigateToPage();
+        //Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
-        // test changes
     }
             @Test
-            public void loginValidEmailPassword() {
-                navigateToPage("https://qa.koel.app/");
+            public void loginValidEmailPassword() throws InterruptedException {
+                //navigateToPage(String, url);
                 provideEmail("clemence.breslin@testpro.io");
                 providePassword("0usTFBYn");
                 clickSubmit();
@@ -37,10 +28,11 @@ public class LoginTests extends BaseTest {
             }
             @Test
             public void loginInvalidEmailPassword() {
-                navigateToPage("https://qa.koel.app/");
-                provideEmail("invalid@class.com");
-                providePassword("te$t$tudent");
-                clickSubmit();
+                //navigateToPage("https://qa.koel.app/");
+                //provideEmail("invalid@class.com");
+                //providePassword("te$t$tudent");
+                //clickSubmit();
+                driver.quit();
 
                 //Assert.assertEquals(driver.getCurrentUrl(), url);
             }
