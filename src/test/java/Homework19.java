@@ -17,7 +17,15 @@ public class Homework19 extends BaseTest {
         clickSubmit();
         openPlaylist();
         clickDeletePlaylistBtn();
+        clickButtonDeletePlaylist();
+        Thread.sleep(1000);
         Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMesg);
+
+    }
+
+    public void clickButtonDeletePlaylist() {
+        WebElement deletePlaylist = driver.findElement(By.cssSelector(".ok"));
+        deletePlaylist.click();
 
     }
 
