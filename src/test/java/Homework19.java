@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,13 +19,13 @@ public class Homework19 extends BaseTest {
         openPlaylist();
         clickDeletePlaylistBtn();
         clickButtonDeletePlaylist();
-        Thread.sleep(1000);
         Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMesg);
 
     }
 
     public void clickButtonDeletePlaylist() {
-        WebElement deletePlaylist = driver.findElement(By.cssSelector(".ok"));
+        //WebElement deletePlaylist = driver.findElement(By.cssSelector(".ok"));
+        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ok")));
         deletePlaylist.click();
 
     }

@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -33,20 +34,19 @@ public class Homework18 extends BaseTest {
 
 
     public void selectSong() throws InterruptedException {
-        WebElement song = driver.findElement(By.xpath("//tr[@class='song-item']"));
-        Thread.sleep(2000);
+        //WebElement song = driver.findElement(By.xpath("//tr[@class='song-item']"));
+        WebElement song = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[@class='song-item']")));
         song.click();
     }
 
 
     public void enterAllSongs() throws InterruptedException {
-        WebElement allSongs = driver.findElement(By.cssSelector("a[href='#!/songs']"));
-        Thread.sleep(2000);
+        //WebElement allSongs = driver.findElement(By.cssSelector("a[href='#!/songs']"));
+        WebElement allSongs = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='#!/songs']")));
         allSongs.click();
     }
 }
 
-//This looks to be passing now :)
 
 
 
