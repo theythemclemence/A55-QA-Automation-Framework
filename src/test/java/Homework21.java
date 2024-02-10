@@ -12,7 +12,7 @@ import java.util.List;
 public class Homework21 extends BaseTest {
 
     @Test
-    public void renamePlaylist() throws InterruptedException {
+    public void renamePlaylist() {
 
         String updatedPlaylistSuccessMsg = "Updated playlist \"Sample Edited Playlist.\"";
 
@@ -20,43 +20,32 @@ public class Homework21 extends BaseTest {
         provideEmail("clemence.breslin@testpro.io");
         providePassword("0usTFBYn");
         logintoKoel();
-        Thread.sleep(2000);
+
         doubleClickPlaylist();
-        enterNewName();
+        enterNewName("New Playlist");
         Assert.assertEquals(getRenamePlaylistSuccessMsg(), updatedPlaylistSuccessMsg);
     }
 
 
+    public String getRenamePlaylistSuccessMsg() {
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return notification.getText();
+    }
 
-public String getRenamePlaylistSuccessMsg(){
-    WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-    return notification.getText();
-        }
-
-    public void enterNewName() {
-    WebElement playListInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-    playListInputField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE ));
-    playListInputField.sendKeys(newPlaylistName);
-    playListInputField.sendKeys(Keys.ENTER);
+    public void enterNewName(String namePlaylist) {
+        WebElement playListInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        playListInputField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
+        playListInputField.sendKeys(namePlaylist);
+        playListInputField.sendKeys(Keys.ENTER);
 
     }
 
-    public void displayAllSongs() {
-            List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
-            System.out.println("Number of Songs found: "+ countSongs());
-            for (WebElement e: songList){
-                System.out.println(e.getText());
-            }
-        }
-
     public void doubleClickPlaylist() {
-    WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
-    actions.doubleClick(playlistElement).perform();
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        actions.doubleClick(playlistElement).perform();
 
-    public String getPlaylistDetails() {
-                return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
-            }
-
+    }
+}
 
 
 
