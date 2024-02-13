@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 import java.time.Duration;
 
@@ -25,6 +27,7 @@ public class LoginTests extends BaseTest {
 
                 WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
                 Assert.assertTrue(avatarIcon.isDisplayed());
+
             }
             @Test
             public void loginInvalidEmailPassword() {
@@ -36,5 +39,20 @@ public class LoginTests extends BaseTest {
 
                 //Assert.assertEquals(driver.getCurrentUrl(), url);
             }
-        }
+
+
+        //Login with Valid email Test using the Page Object Model
+    @Test
+public void loginValidEmailValidPasswordTest(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("clemence.breslin@testpro.io");
+        loginPage.providePassword("0usTFBYn");
+        loginPage.clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+
+    }
+}
 
