@@ -3,6 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+private By submitButtonLocator = By.cssSelector("[type='submit']");
+private By emailField = By.cssSelector("input[type='email']");
+
+
 public class LoginPage extends BasePage {
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
@@ -17,6 +21,15 @@ public class LoginPage extends BasePage {
     By loginBtn = By.cssSelector("button[type='submit']");
 
     //Helper Methods
+
+    public LoginPage clickSubmitBtn(){
+        driver.findElement(submitButtonLocator).click();
+        return this;
+    }
+
+    public LoginPage provideEmail(String email){
+        
+    }
 
     public void provideEmail(String email) {
         findElement(emailField).sendKeys(email);
