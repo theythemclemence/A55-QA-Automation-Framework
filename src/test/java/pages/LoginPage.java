@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     private WebElement emailField;
 
     @FindBy(css = "input[type='password']")
-    private WebElement passwordField; 
+    private WebElement passwordField;
 
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
@@ -38,13 +38,7 @@ public class LoginPage extends BasePage {
         passwordElement.sendKeys(password);
         return this;
     }
-        public void login(){
-        provideEmail("clemence.breslin@testpro.io");
-        providePassword("0usTFBYn");
-        clickSubmitBtn();
-
         }
-    }
 
 
 
