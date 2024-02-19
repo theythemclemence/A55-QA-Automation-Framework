@@ -28,7 +28,7 @@ public class BasePage {
     }
 
     protected WebElement findElement(WebElement webElement) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(webElement));
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     protected void contextClick(WebElement webElement) {
