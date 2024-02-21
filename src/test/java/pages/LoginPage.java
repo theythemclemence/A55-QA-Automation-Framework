@@ -8,8 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
+    public Object clickSubmitBtn;
+
     @FindBy(css = "[type='submit']")
-    private WebElement submitButtonLocator;
+    public WebElement submitButtonLocator;
 
     @FindBy(css = "input[type='email']")
     private WebElement emailField;
@@ -35,7 +37,8 @@ public class LoginPage extends BasePage {
         findElement(passwordField).sendKeys(password);
         return this;
     }
-        }
+    }
+
 
 
 

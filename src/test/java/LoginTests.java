@@ -49,7 +49,7 @@ public void loginValidEmailValidPasswordTest(){
 
         loginPage.provideEmail("clemence.breslin@testpro.io");
         loginPage.providePassword("0usTFBYn");
-        loginPage.clickSubmit();
+        loginPage.submitButtonLocator.click();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
 
